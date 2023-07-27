@@ -1,0 +1,35 @@
+stages:
+  - build_frontend
+  - build_backend
+  - build_qr
+
+build_frontend:
+  stage: build_frontend
+  image: node:14
+  script:
+    - cd applications/website
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - applications/website/dist/
+
+build_backend:
+  stage: build_backend
+  image: node:14
+  script:
+    - cd applications/backend
+    - npm install
+  artifacts:
+    paths:
+      - applications/backend/node_modules/
+
+build_qr:
+  stage: build_qr
+  image: python:3
+  script:
+    - cd applications/qr
+    - pip install --no-cache-dir -r requirements.txt
+  artifacts:
+    paths:
+      - applications/qr/venv/
