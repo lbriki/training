@@ -57,7 +57,7 @@ pipeline {
         stage('Deploy QR') {
             steps {
                 script {
-                    sh "docker run -d -p 8420:80 $DOCKER_IMAGE_QR"
+                    sh "docker run -d -p 8421:80 $DOCKER_IMAGE_QR"
                 }
             }
         }
