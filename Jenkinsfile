@@ -8,34 +8,31 @@ pipeline {
     }
 
     stages {
-        stage('Build and Push Backend') {
+        stage('Build Backend') {
             steps {
                 script {
                     dir('applications/backend') {
                         sh 'docker build -t $DOCKER_IMAGE_BACKEND .'
-                        sh 'docker push $DOCKER_IMAGE_BACKEND'
                     }
                 }
             }
         }
 
-        stage('Build and Push Website') {
+        stage('Build Website') {
             steps {
                 script {
                     dir('applications/website') {
                         sh 'docker build -t $DOCKER_IMAGE_WEBSITE .'
-                        sh 'docker push $DOCKER_IMAGE_WEBSITE'
                     }
                 }
             }
         }
 
-        stage('Build and Push QR') {
+        stage('Build QR') {
             steps {
                 script {
                     dir('applications/qr') {
                         sh 'docker build -t $DOCKER_IMAGE_QR .'
-                        sh 'docker push $DOCKER_IMAGE_QR'
                     }
                 }
             }
@@ -44,7 +41,7 @@ pipeline {
         stage('Deploy Backend') {
             steps {
                 script {
-                    sh "docker run -d -p 8420:8420 $DOCKER_IMAGE_BACKEND"
+                    sh "docker run -d -p 8420:80 $DOCKER_IMAGE_BACKEND"
                 }
             }
         }
@@ -52,7 +49,7 @@ pipeline {
         stage('Deploy Website') {
             steps {
                 script {
-                    sh "docker run -d -p 80:80 $DOCKER_IMAGE_WEBSITE"
+                    sh "docker run -d -p 8081:80 $DOCKER_IMAGE_WEBSITE"
                 }
             }
         }
@@ -60,7 +57,7 @@ pipeline {
         stage('Deploy QR') {
             steps {
                 script {
-                    sh "docker run -d -p 8420:8420 $DOCKER_IMAGE_QR"
+                    sh "docker run -d -p 8420:80 $DOCKER_IMAGE_QR"
                 }
             }
         }
