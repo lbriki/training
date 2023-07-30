@@ -28,21 +28,38 @@ pipeline {
                 }
             }
         }
+   
 
         stage('Build QR') {
             steps {
                 script {
                     dir('applications/qr') {
+                        
                         sh 'docker build -t $DOCKER_IMAGE_QR .'
                     }
                 }
             }
         }
-
+        stage('Stop Existing Container') {
+      steps {
+        script {
+          try {
+            sh 'docker stop back'
+            sh 'docker rm back'
+            sh 'docker stop front'
+            sh 'docker rm front'
+            sh 'docker stop qr '
+            sh 'docker rm qr'
+          } catch (Exception e) {
+            // Ignore if the container is not running .............
+          }
+        }
+      }
+    }
         stage('Deploy Backend') {
             steps {
                 script {
-                    sh "docker run -d -p ${BACKEND_PORT}:80 $DOCKER_IMAGE_BACKEND"
+                    sh "docker run  -p ${BACKEND_PORT}:80 -d --name back $DOCKER_IMAGE_BACKEND" 
                 }
             }
         }
@@ -50,7 +67,7 @@ pipeline {
         stage('Deploy Website') {
             steps {
                 script {
-                    sh "docker run -d -p 8081:80 $DOCKER_IMAGE_WEBSITE"
+                    sh "docker run  -p 8081:80 -d --name front $DOCKER_IMAGE_WEBSITE  "
                 }
             }
         }
@@ -58,7 +75,7 @@ pipeline {
         stage('Deploy QR') {
             steps {
                 script {
-                    sh "docker run -d -p 8421:80 $DOCKER_IMAGE_QR"
+                    sh "docker run  -p 8421:80 -d --name qr $DOCKER_IMAGE_QR"
                 }
             }
         }
