@@ -5,7 +5,7 @@ pipeline {
         DOCKER_IMAGE_BACKEND = 'my-backend-image:latest'
         DOCKER_IMAGE_WEBSITE = 'my-website-image:latest'
         DOCKER_IMAGE_QR = 'my-qr-image:latest'
-        BACKEND_PORT = '8422' // Update the port here
+        BACKEND_PORT = '3000' // Update the port here
     }
 
     stages {
