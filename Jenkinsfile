@@ -67,7 +67,7 @@ pipeline {
         stage('Deploy Website') {
             steps {
                 script {
-                    sh "docker run  -p 8081:80 -d --name front $DOCKER_IMAGE_WEBSITE  "
+                    sh "docker run  -p 8081:80 -d -v /applications/website/src/assets/data --name front $DOCKER_IMAGE_WEBSITE  "
                 }
             }
         }
