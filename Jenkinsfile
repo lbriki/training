@@ -9,14 +9,7 @@ pipeline {
     }
 
     stages {
-         stage('Show Where I Work') {
-            steps {
-                script {
-                    def currentDir = pwd()
-                    echo "Current working directory: ${currentDir}"
-                }
-            }
-        }
+         
 
         stage('Build Backend') {
             steps {
@@ -73,13 +66,22 @@ pipeline {
             }
         }
 
+        // stage('Deploy Website') {
+        //     steps {
+        //         script {
+        //             sh "docker run  -p 8081:80 -d -v ./applications/website/src/assets/data:./assets/data --name front $DOCKER_IMAGE_WEBSITE  "
+        //         }
+        //     }
+        // }
         stage('Deploy Website') {
-            steps {
-                script {
-                    sh "docker run  -p 8081:80 -d -v ./applications/website/src/assets/data:./assets/data --name front $DOCKER_IMAGE_WEBSITE  "
-                }
-            }
+    steps {
+        script {
+            def absPath = sh(returnStdout: true, script: 'echo $PWD').trim()
+            sh "docker run -p 8081:80 -d -v ${absPath}/applications/website/src/assets/data:/assets/data --name front $DOCKER_IMAGE_WEBSITE"
         }
+    }
+}
+
 
         stage('Deploy QR') {
             steps {
