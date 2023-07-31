@@ -51,7 +51,7 @@ pipeline {
             sh 'docker stop qr '
             sh 'docker rm qr'
           } catch (Exception e) {
-            // Ignore if the container is not running .............
+            // Ignore if the container is not running ..............................
           }
         }
       }
