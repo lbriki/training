@@ -80,4 +80,14 @@ pipeline {
             }
         }
     }
+     post {
+      always {
+        mail      to: "briki1525@gmail.com",
+                  subject: "Jenkins Build Notification",
+                  body: "The build has completed. Status: ${currentBuild.currentResult}"
+                  
+                
+      
+    }
+  }
 }
