@@ -9,10 +9,11 @@ pipeline {
     }
 
     stages {
-         stage('Show Workspace') {
+         stage('Show Where I Work') {
             steps {
                 script {
-                    sh "ls -la ${PWD}"
+                    def currentDir = pwd()
+                    echo "Current working directory: ${currentDir}"
                 }
             }
         }
