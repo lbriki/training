@@ -13,7 +13,7 @@ COPY --from=build /app/dist/website /etc/nginx/html
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 # Add a volume to receive new images
-VOLUME ["/app/src/assets/data"]
+VOLUME ["/assets/data"]
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
