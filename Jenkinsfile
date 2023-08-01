@@ -68,7 +68,7 @@ pipeline {
         stage('Deploy Backend') {
             steps {
                 script {
-                    sh "docker run  -p ${BACKEND_PORT}:80 -d --name back $DOCKER_IMAGE_BACKEND" 
+                    sh "docker run  -p ${BACKEND_PORT}:3000 -d --name back $DOCKER_IMAGE_BACKEND" 
                 }
             }
         }
@@ -76,7 +76,7 @@ pipeline {
         // stage('Deploy Website') {
         //     steps {
         //         script {
-        //             sh "docker run  -p 8081:80 -d -v ./applications/website/src/assets/data:./etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE  "
+        //             sh "docker run  -p 8081:8081 -d -v ./applications/website/src/assets/data:./etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE  "
         //         }
         //     }
         // }
@@ -93,7 +93,7 @@ pipeline {
         stage('Deploy QR') {
             steps {
                 script {
-                    sh "docker run  -p 8421:80 -d -v my_volume:/applications/qr --name qr $DOCKER_IMAGE_QR"
+                    sh "docker run  -p 8421:8421 -d -v my_volume:/applications/qr --name qr $DOCKER_IMAGE_QR"
                 }
             }
         }
