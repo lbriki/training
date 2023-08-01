@@ -69,7 +69,7 @@ pipeline {
         // stage('Deploy Website') {
         //     steps {
         //         script {
-        //             sh "docker run  -p 8081:80 -d -v ./applications/website/src/assets/data:./assets/data --name front $DOCKER_IMAGE_WEBSITE  "
+        //             sh "docker run  -p 8081:80 -d -v ./applications/website/src/assets/data:./etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE  "
         //         }
         //     }
         // }
@@ -77,7 +77,7 @@ pipeline {
     steps {
         script {
             def absPath = sh(returnStdout: true, script: 'echo $PWD').trim()
-            sh "docker run -p 8081:80 -d -v ${absPath}/applications/website/src/assets/data:/assets/data --name front $DOCKER_IMAGE_WEBSITE"
+            sh "docker run -p 8081:80 -d -v ${absPath}/applications/website/src/assets/data:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
         }
     }
 }
