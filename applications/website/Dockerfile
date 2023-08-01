@@ -19,6 +19,7 @@
 # CMD ["nginx", "-g", "daemon off;"]
 # Stage 1: Build Angular app
 # Stage 1: Build Angular app
+# Stage 1: Build Angular app
 FROM node:12-alpine as build
 WORKDIR /app
 COPY package*.json ./
@@ -36,21 +37,15 @@ RUN rm /etc/nginx/conf.d/default.conf
 # Copy the new Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/
 
-# Create the /assets/data folder to store new images
-RUN mkdir -p /assets/data
-
-# Copy the built Angular app to Nginx's HTML folder
-COPY --from=build /app/dist/website /etc/nginx/html
-
-# Install rsync
-RUN apk update && apk add rsync
-
-# Add the synchronization script
-COPY sync-assets.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/sync-assets.sh
-
 # Expose port 8081 for Nginx
 EXPOSE 8081
 
-# Start Nginx server and run the synchronization script in the background
-CMD ["sh", "-c", "sync-assets.sh & nginx -g 'daemon off;'"]
+# Copy the built Angular app to Nginx's HTML folder
+COPY --from=build /app/dist/website /usr/share/nginx/html
+
+# Create the /assets/data folder to store new images
+RUN mkdir -p /usr/share/nginx/html/assets/data
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
+
