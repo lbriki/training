@@ -23,7 +23,7 @@ class EnvValidator:
 
     @staticmethod
     def qr_tmp_folder():
-        return os.getenv('QR_TMP_FOLDER', "./generated")
+        return os.getenv('QR_TMP_FOLDER', "./")
 
     @staticmethod
     def qr_fill_color():
