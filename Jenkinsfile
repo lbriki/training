@@ -93,7 +93,7 @@ pipeline {
         stage('Deploy QR') {
             steps {
                 script {
-                    sh "docker run  -p 8420:8420 -d -v my_volume:/applications/qr --name qr $DOCKER_IMAGE_QR"
+                    sh "docker run  -p 8420:8420 -d -v my_volume:/applications/qr/generated --name qr $DOCKER_IMAGE_QR"
                 }
             }
         }
