@@ -9,6 +9,13 @@ pipeline {
     }
 
     stages {
+        stage('Create Docker Volume') {
+    steps {
+        script {
+            sh 'docker volume create my_volume'
+        }
+    }
+}
          
 
         stage('Build Backend') {
@@ -77,7 +84,7 @@ pipeline {
     steps {
         script {
             def absPath = sh(returnStdout: true, script: 'echo $PWD').trim()
-            sh "docker run -p 8081:80 -d -v ${absPath}/applications/website/src/assets/data:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
+            sh "docker run -p 8081:80 -d -v my_volume:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
         }
     }
 }
@@ -86,7 +93,7 @@ pipeline {
         stage('Deploy QR') {
             steps {
                 script {
-                    sh "docker run  -p 8421:80 -d --name qr $DOCKER_IMAGE_QR"
+                    sh "docker run  -p 8421:80 -d -v my_volume:/applications/qr/generated_qr --name qr $DOCKER_IMAGE_QR"
                 }
             }
         }
