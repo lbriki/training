@@ -1,0 +1,34 @@
+---
+- name: Deploy Containers
+  hosts: localhost
+  gather_facts: no
+  environment:
+    DOCKER_IMAGE_BACKEND: 'my-backend-image:latest'
+    DOCKER_IMAGE_WEBSITE: 'my-website-image:latest'
+    DOCKER_IMAGE_QR: 'my-qr-image:latest'
+  
+
+  tasks:
+    - name: Build Backend
+      shell:
+        cmd: docker build -t {{ DOCKER_IMAGE_BACKEND }} applications/backend
+      args:
+        chdir: "{{ playbook_dir }}"
+
+    - name: Build Website
+      shell:
+        cmd: docker build -t {{ DOCKER_IMAGE_WEBSITE }} applications/website
+      args:
+        chdir: "{{ playbook_dir }}"
+
+    - name: Build QR
+      shell:
+        cmd: docker build -t {{ DOCKER_IMAGE_QR }} applications/qr
+      args:
+        chdir: "{{ playbook_dir }}"
+
+    - name: Deploy Containers
+      shell:
+        cmd: docker-compose up -d
+      args:
+        chdir: "{{ playbook_dir }}"
