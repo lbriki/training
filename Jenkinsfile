@@ -9,15 +9,6 @@ pipeline {
     }
 
     stages {
-        stage('Create Docker Volume') {
-    steps {
-        script {
-            sh 'docker volume create my_volume'
-        }
-    }
-}
-         
-
         stage('Build Backend') {
             steps {
                 script {
@@ -49,52 +40,52 @@ pipeline {
                 }
             }
         }
-        stage('Stop Existing Container') {
-      steps {
-        script {
-          try {
-            sh 'docker stop back'
-            sh 'docker rm back'
-            sh 'docker stop front'
-            sh 'docker rm front'
-            sh 'docker stop qr '
-            sh 'docker rm qr'
-          } catch (Exception e) {
-            // Ignore if the container is not running ..............................
-          }
-        }
-      }
-    }
-        stage('Deploy Backend') {
+//         stage('Stop Existing Container') {
+//       steps {
+//         script {
+//           try {
+//             sh 'docker stop back'
+//             sh 'docker rm back'
+//             sh 'docker stop front'
+//             sh 'docker rm front'
+//             sh 'docker stop qr '
+//             sh 'docker rm qr'
+//           } catch (Exception e) {
+//             // Ignore if the container is not running ..............................
+//           }
+//         }
+//       }
+//     }
+//         stage('Deploy Backend') {
+//             steps {
+//                 script {
+//                     sh "docker run  -p ${BACKEND_PORT}:3000 -d --name back $DOCKER_IMAGE_BACKEND" 
+//                 }
+//             }
+//         }
+
+     
+//         stage('Deploy Website') {
+//     steps {
+//         script {
+//             def absPath = sh(returnStdout: true, script: 'echo $PWD').trim()
+//             sh "docker run -p 8081:80 -d -v my_volume:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
+//         }
+//     }
+// }
+
+
+//         stage('Deploy QR') {
+//             steps {
+//                 script {
+//                     sh "docker run  -p 8400:8400 -d -v my_volume:/applications/qr/generated --name qr $DOCKER_IMAGE_QR"
+//                 }
+//             }
+//         }
+
+        stage('Deploy Containers') {
             steps {
-                script {
-                    sh "docker run  -p ${BACKEND_PORT}:3000 -d --name back $DOCKER_IMAGE_BACKEND" 
-                }
-            }
-        }
-
-        // stage('Deploy Website') {
-        //     steps {
-        //         script {
-        //             sh "docker run  -p 8081:8081 -d -v ./applications/website/src/assets/data:./etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE  "
-        //         }
-        //     }
-        // }
-        stage('Deploy Website') {
-    steps {
-        script {
-            def absPath = sh(returnStdout: true, script: 'echo $PWD').trim()
-            sh "docker run -p 8081:80 -d -v my_volume:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
-        }
-    }
-}
-
-
-        stage('Deploy QR') {
-            steps {
-                script {
-                    sh "docker run  -p 8400:8400 -d -v my_volume:/applications/qr/generated --name qr $DOCKER_IMAGE_QR"
-                }
+                sh 'docker-compose up -d'
             }
         }
     }
