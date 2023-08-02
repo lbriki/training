@@ -6,7 +6,7 @@ services:
     container_name: back
 
     build:
-      context: ./backend
+      context: ./applications/backend
       dockerfile: Dockerfile
     restart: always
     networks:
@@ -22,7 +22,7 @@ services:
     container_name: container-qr
 
     build:
-      context: ./qr
+      context: ./applications/qr
       dockerfile: Dockerfile
     restart: always
     networks:
@@ -40,7 +40,7 @@ services:
     container_name: container-website
 
     build:
-      context: ./website
+      context: ./applications/website
       dockerfile: Dockerfile
     restart: always
     networks:
