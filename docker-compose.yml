@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+
+  nodejs:
+    image: my-backend-image:latest
+    container_name: back
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - lbriki
+    ports:
+      - 3000:3000
+    env_file:
+      - backend/.env 
+
+
+  python:
+    image: my-qr-image:latest
+    container_name: container-qr
+
+    build:
+      context: ./qr
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - lbriki
+    ports:
+      - 8400:8400
+    env_file:
+      - qr/.env
+    # volumes:
+      # - ./data_volumes:/app/generated_qr/
+
+
+  angular:
+    image: my-website-image:latest
+    container_name: container-website
+
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - lbriki
+    ports:
+      - 8081:80
+    # volumes:
+      # - ./data_volumes:/etc/nginx/html/assets/data:ro  
+
+networks:
+  lbriki:
+    driver: bridge
+
+# volumes:
+  # git data_volumes:
