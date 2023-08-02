@@ -1,45 +1,45 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE_BACKEND = 'my-backend-image:latest'
-        DOCKER_IMAGE_WEBSITE = 'my-website-image:latest'
-        DOCKER_IMAGE_QR = 'my-qr-image:latest'
-        BACKEND_PORT = '3000' // Update the port here
-    }
+    // environment {
+    //     DOCKER_IMAGE_BACKEND = 'my-backend-image:latest'
+    //     DOCKER_IMAGE_WEBSITE = 'my-website-image:latest'
+    //     DOCKER_IMAGE_QR = 'my-qr-image:latest'
+    //     BACKEND_PORT = '3000' // Update the port here
+    // }
 
-    stages {
-        stage('Build Backend') {
-            steps {
-                script {
-                    dir('applications/backend') {
-                        sh 'docker build -t $DOCKER_IMAGE_BACKEND .'
-                    }
-                }
-            }
-        }
+    // stages {
+    //     stage('Build Backend') {
+    //         steps {
+    //             script {
+    //                 dir('applications/backend') {
+    //                     sh 'docker build -t $DOCKER_IMAGE_BACKEND .'
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        stage('Build Website') {
-            steps {
-                script {
-                    dir('applications/website') {
-                        sh 'docker build -t $DOCKER_IMAGE_WEBSITE .'
-                    }
-                }
-            }
-        }
+    //     stage('Build Website') {
+    //         steps {
+    //             script {
+    //                 dir('applications/website') {
+    //                     sh 'docker build -t $DOCKER_IMAGE_WEBSITE .'
+    //                 }
+    //             }
+    //         }
+    //     }
    
 
-        stage('Build QR') {
-            steps {
-                script {
-                    dir('applications/qr') {
+    //     stage('Build QR') {
+    //         steps {
+    //             script {
+    //                 dir('applications/qr') {
                         
-                        sh 'docker build -t $DOCKER_IMAGE_QR .'
-                    }
-                }
-            }
-        }
+    //                     sh 'docker build -t $DOCKER_IMAGE_QR .'
+    //                 }
+    //             }
+    //         }
+    //     }
 //         stage('Stop Existing Container') {
 //       steps {
 //         script {
@@ -83,9 +83,9 @@ pipeline {
 //             }
 //         }
 
-        stage('Deploy Containers') {
+        stage('Lancement de Ansible playbook') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'ansible-playbook deploy.yml'
             }
         }
     }
