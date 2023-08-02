@@ -19,7 +19,7 @@ services:
 
   python:
     image: my-qr-image:latest
-    container_name: container-qr
+    container_name: qr
 
     build:
       context: ./applications/qr
@@ -31,13 +31,13 @@ services:
       - 8400:8400
     env_file:
       - applications/qr/.env
-    # volumes:
-      # - ./data_volumes:/app/generated_qr/
+     volumes:
+       - ./data_volumes:/app/generated_qr/
 
 
   angular:
     image: my-website-image:latest
-    container_name: container-website
+    container_name: front
 
     build:
       context: ./applications/website
@@ -47,12 +47,12 @@ services:
       - lbriki
     ports:
       - 8081:80
-    # volumes:
-      # - ./data_volumes:/etc/nginx/html/assets/data:ro  
+    volumes:
+       - ./data_volumes:/etc/nginx/html/assets/data:ro  
 
 networks:
   lbriki:
     driver: bridge
 
-# volumes:
-  # git data_volumes:
+ volumes:
+   git data_volumes:
