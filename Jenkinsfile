@@ -82,7 +82,7 @@ pipeline {
 //                 }
 //             }
 //         }
-
+stages {
         stage('Lancement de Ansible playbook') {
             steps {
                 sh 'ansible-playbook deploy.yml'
