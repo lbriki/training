@@ -6,7 +6,7 @@
     DOCKER_IMAGE_BACKEND: 'my-backend-image:latest'
     DOCKER_IMAGE_WEBSITE: 'my-website-image:latest'
     DOCKER_IMAGE_QR: 'my-qr-image:latest'
-  
+    BACKEND_PORT: '3000'
 
   tasks:
     - name: Build Backend
