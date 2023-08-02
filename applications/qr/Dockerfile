@@ -45,3 +45,4 @@ EXPOSE 8420
 # Start Nginx and the Python application using uvicorn
 CMD service nginx start && uvicorn app:atom --host 0.0.0.0 --port 8420
 
+
