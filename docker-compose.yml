@@ -30,7 +30,7 @@ services:
     ports:
       - 8400:8400
     env_file:
-      - qr/.env
+      - applications/qr/.env
     # volumes:
       # - ./data_volumes:/app/generated_qr/
 
