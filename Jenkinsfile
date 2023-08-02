@@ -84,7 +84,7 @@ pipeline {
     steps {
         script {
             def absPath = sh(returnStdout: true, script: 'echo $PWD').trim()
-            sh "docker run -p 8081:80 -d -v my_volume:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
+            sh "docker run -p 8081:8081 -d -v my_volume:/etc/nginx/html/assets/data --name front $DOCKER_IMAGE_WEBSITE"
         }
     }
 }
