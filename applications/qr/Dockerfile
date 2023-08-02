@@ -39,8 +39,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code to the container
 COPY . .
 
-# Expose port 8420 for uvicorn
-EXPOSE 8420
 
 # Start Nginx and the Python application using uvicorn
 CMD service nginx start && uvicorn app:atom --host 0.0.0.0 --port 8420
