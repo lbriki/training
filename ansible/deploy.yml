@@ -1,0 +1,10 @@
+---
+- name: Deploy Containers using Role
+  hosts: localhost
+  gather_facts: no
+
+  roles:
+    - roles/back
+    - roles/qr
+    - roles/front
+    - roles/run 

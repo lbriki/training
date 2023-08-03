@@ -85,7 +85,7 @@ pipeline {
 stages {
         stage('Lancement de Ansible playbook') {
             steps {
-                sh 'ansible-playbook deploy.yml'
+                sh 'ansible-playbook ./ansible/deploy.yml'
             }
         }
     }
