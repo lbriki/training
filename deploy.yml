@@ -13,21 +13,21 @@
         name: "{{ DOCKER_IMAGE_BACKEND }}"
         build:
           path: applications/backend
-          source: null  # Explicitly set "source" to null
+        source: build
 
     - name: Build Website
       docker_image:
         name: "{{ DOCKER_IMAGE_WEBSITE }}"
         build:
           path: applications/website
-          source: null  # Explicitly set "source" to null
+        source: build
 
     - name: Build QR
       docker_image:
         name: "{{ DOCKER_IMAGE_QR }}"
         build:
           path: applications/qr
-          source: null  # Explicitly set "source" to null
+        source: build
 
     - name: Deploy containers using docker-compose
       community.docker.docker_compose:
