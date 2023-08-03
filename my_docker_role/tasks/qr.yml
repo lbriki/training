@@ -1,7 +1,0 @@
-- name: Build QR
-  docker_image:
-    name: "{{ DOCKER_IMAGE_QR }}"
-    build:
-      path: applications/qr
-      pull: no
-    source: build
