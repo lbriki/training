@@ -1,0 +1,23 @@
+- name: Build Backend
+  docker_image:
+    name: "{{ DOCKER_IMAGE_BACKEND }}"
+    build:
+      path: applications/backend
+      pull: no
+    source: build
+
+- name: Build Website
+  docker_image:
+    name: "{{ DOCKER_IMAGE_WEBSITE }}"
+    build:
+      path: applications/website
+      pull: no
+    source: build
+
+- name: Build QR
+  docker_image:
+    name: "{{ DOCKER_IMAGE_QR }}"
+    build:
+      path: applications/qr
+      pull: no
+    source: build
