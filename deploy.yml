@@ -21,6 +21,7 @@
         name: "{{ DOCKER_IMAGE_WEBSITE }}"
         build:
           path: applications/website
+          pull: no
         source: build
 
     - name: Build QR
@@ -28,6 +29,7 @@
         name: "{{ DOCKER_IMAGE_QR }}"
         build:
           path: applications/qr
+          pull: no
         source: build
 
     - name: Deploy containers using docker-compose
