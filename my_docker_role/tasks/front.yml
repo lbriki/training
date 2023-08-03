@@ -1,0 +1,7 @@
+- name: Build Website
+  docker_image:
+    name: "{{ DOCKER_IMAGE_WEBSITE }}"
+    build:
+      path: applications/website
+      pull: no
+    source: build

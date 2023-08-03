@@ -1,0 +1,7 @@
+- name: Build Backend
+  docker_image:
+    name: "{{ DOCKER_IMAGE_BACKEND }}"
+    build:
+      path: applications/backend
+      pull: no
+    source: build
