@@ -34,7 +34,7 @@
 
     - name: Deploy containers using docker-compose
       community.docker.docker_compose:
-        project_src: /
+        project_src: 
         
 
 
