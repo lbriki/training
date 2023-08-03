@@ -13,26 +13,24 @@
         name: "{{ DOCKER_IMAGE_BACKEND }}"
         build:
           path: applications/backend
-          source: build
 
     - name: Build Website
       docker_image:
         name: "{{ DOCKER_IMAGE_WEBSITE }}"
         build:
           path: applications/website
-          source: build
 
     - name: Build QR
       docker_image:
         name: "{{ DOCKER_IMAGE_QR }}"
         build:
           path: applications/qr
-          source: build
 
     - name: Deploy containers using docker-compose
       community.docker.docker_compose:
         project_src: /
         state: started
+
 
 
 
