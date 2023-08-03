@@ -33,6 +33,9 @@
         source: build
 
     - name: Deploy containers using docker-compose
+      shell:
+         cmd: pwd 
+         cmd: ls
       community.docker.docker_compose:
         project_src: /
         
