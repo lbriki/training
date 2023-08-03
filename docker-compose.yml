@@ -29,8 +29,8 @@ services:
       - 8400:8400
     env_file:
       - ./applications/qr/.env
-    volumes:
-      - ./data_volumes:/app/generated_qr/
+    # volumes:
+    #   - ./data_volumes:/app/generated_qr/
 
 
   angular:
@@ -44,13 +44,13 @@ services:
       - lbriki
     ports:
       - 8081:80
-    volumes:
-      - ./data_volumes:/etc/nginx/html/assets/data:ro  
+    # volumes:
+    #   - ./data_volumes:/etc/nginx/html/assets/data:ro  
 
 networks:
   lbriki:
     driver: bridge
 
-volumes:
-  git:
-  data_volumes:
+# volumes:
+#   git:
+#   data_volumes:
