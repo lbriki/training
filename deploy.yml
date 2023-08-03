@@ -10,18 +10,21 @@
   tasks:
     - name: Build Backend
       docker_image:
-        path: applications/backend
         name: "{{ DOCKER_IMAGE_BACKEND }}"
+        build:
+          path: applications/backend
 
     - name: Build Website
       docker_image:
-        path: applications/website
         name: "{{ DOCKER_IMAGE_WEBSITE }}"
+        build:
+          path: applications/website
 
     - name: Build QR
       docker_image:
-        path: applications/qr
         name: "{{ DOCKER_IMAGE_QR }}"
+        build:
+          path: applications/qr
 
     - name: Deploy containers using docker-compose
       community.docker.docker_compose:
