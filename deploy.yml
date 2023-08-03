@@ -13,6 +13,7 @@
         name: "{{ DOCKER_IMAGE_BACKEND }}"
         build:
           path: applications/backend
+          pull: no
         source: build
 
     - name: Build Website
