@@ -2,6 +2,6 @@
   docker_image:
     name: 'my-website-image'
     build:
-      path: applications/website
+      path: ../applications/website
       pull: no
     source: build
