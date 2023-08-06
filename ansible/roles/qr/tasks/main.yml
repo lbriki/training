@@ -2,6 +2,6 @@
   docker_image:
     name: 'my-qr-image'
     build:
-      path: applications/qr
+      path: ../applications/qr
       pull: no
     source: build
