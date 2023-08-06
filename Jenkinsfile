@@ -89,7 +89,7 @@ parameters {
 stages {
         stage('Lancement de Ansible playbook') {
             steps {
-                sh 'ansible-playbook ./ansible/deploy.yml --tags ${params.RolesToUpdate} '
+                sh "ansible-playbook ./ansible/deploy.yml --tags ${params.RolesToUpdate} "
             }
         }
     }
