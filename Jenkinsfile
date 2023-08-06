@@ -103,7 +103,6 @@ pipeline {
             visibleItemCount: 3,
             value: 'roles/back,roles/qr,roles/front',
             quoteValue: false,
-            descriptionPropertyValue: 'Roles to update',
         )
     }
 
