@@ -85,7 +85,7 @@ pipeline {
 stages {
         stage('Lancement de Ansible playbook') {
             steps {
-                sh 'ansible-playbook ./ansible/deploy.yml --tags roles/qr'
+                sh 'ansible-playbook ./ansible/deploy.yml '
             }
         }
     }
