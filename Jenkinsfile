@@ -82,17 +82,46 @@ pipeline {
 //                 }
 //             }
 //         }
-parameters {
-        // Your Extended Choice Parameter for selecting roles
-        choice(name: 'RolesToUpdate', choices: ['roles/back', 'roles/qr', 'roles/front'], description: 'Select the roles to update')
+// parameters {
+//         // Your Extended Choice Parameter for selecting roles
+//         choice(name: 'RolesToUpdate', choices: ['roles/back', 'roles/qr', 'roles/front'], description: 'Select the roles to update')
+//     }
+// stages {
+//         stage('Lancement de Ansible playbook') {
+//             steps {
+//                 sh "ansible-playbook ./ansible/deploy.yml --tags ${params.RolesToUpdate} "
+//             }
+//         }
+//     }
+
+ parameters {
+        extendedChoice(
+            name: 'UPDATE_ROLES',
+            description: 'Select the roles to update',
+            multiSelectDelimiter: ',',
+            type: 'PT_CHECKBOX',
+            visibleItemCount: 3,
+            value: 'roles/back,roles/qr,roles/front',
+            quoteValue: false,
+            descriptionPropertyValue: 'Roles to update',
+            project: 'Jenkins'
+        )
     }
-stages {
+
+    stages {
         stage('Lancement de Ansible playbook') {
             steps {
-                sh "ansible-playbook ./ansible/deploy.yml --tags ${params.RolesToUpdate} "
+                script {
+                    // Use the parameter value to determine which roles to update
+                    def updateRoles = params.UPDATE_ROLES.split(',')
+                    for (def role in updateRoles) {
+                        sh "ansible-playbook ./ansible/deploy.yml --tags ${role.trim()}"
+                    }
+                }
             }
         }
     }
+    
      post {
       always {
         mail      to: "briki1525@gmail.com",
