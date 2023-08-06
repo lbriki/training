@@ -2,6 +2,6 @@
   docker_image:
     name: 'my-backend-image'
     build:
-      path: ./applications/backend
+      path: ../applications/backend
       pull: no
     source: build
