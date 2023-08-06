@@ -82,10 +82,14 @@ pipeline {
 //                 }
 //             }
 //         }
+parameters {
+        // Your Extended Choice Parameter for selecting roles
+        choice(name: 'RolesToUpdate', choices: ['roles/back', 'roles/qr', 'roles/front'], description: 'Select the roles to update')
+    }
 stages {
         stage('Lancement de Ansible playbook') {
             steps {
-                sh 'ansible-playbook ./ansible/deploy.yml --tags roles/qr '
+                sh 'ansible-playbook ./ansible/deploy.yml --tags ${params.RolesToUpdate} '
             }
         }
     }
