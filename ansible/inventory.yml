@@ -1,3 +1,8 @@
-all:
+# inventory.yml
+
+VM:
   hosts:
-    localhost:
+    vm:
+      ansible_host: 192.168.117.135
+      ansible_user: sagon
+      ansible_password: 21212699qQ
