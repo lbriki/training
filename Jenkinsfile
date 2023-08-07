@@ -93,28 +93,12 @@ pipeline {
 //             }
 //         }
 //     }
-
- parameters {
-        extendedChoice(
-            name: 'UPDATE_ROLES',
-            description: 'Select the roles to update',
-            multiSelectDelimiter: ',',
-            type: 'PT_CHECKBOX',
-            visibleItemCount: 3,
-            value: 'roles/back,roles/qr,roles/front',
-            quoteValue: false,
-        )
-    }
-
     stages {
         stage('Lancement de Ansible playbook') {
             steps {
                 script {
-                    // Use the parameter value to determine which roles to update
-                    def updateRoles = params.UPDATE_ROLES.split(',')
-                    for (def role in updateRoles) {
-                        sh "ansible-playbook ./ansible/deploy.yml --tags ${role.trim()}"
-                        // sh "ansible-playbook --roles ./ansible/${role.trim()} ./ansible/deploy.yml "
+                    
+                        sh "ansible-playbook ./ansible/deploy.yml "
                     }
                 }
             }
