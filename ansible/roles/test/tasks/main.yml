@@ -1,5 +1,5 @@
    - name: Create Mr-Anwer folder
-      shell: mkdir /home/sagon/Mr-Anwer
+      shell: mkdir Mr-Anwer
       become_method: sudo
       become_user: root
       vars:
