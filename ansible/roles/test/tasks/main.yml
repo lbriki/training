@@ -1,6 +1,5 @@
-   - name: Create Mr-Anwer folder
-      shell: mkdir Mr-Anwer
-      become_method: sudo
-      become_user: root
-      vars:
-        ansible_become_pass: "21212699qQ"
+ - name: Echo inventory_hostname
+      ansible.builtin.debug:
+        msg:
+          - "Hello from Ansible playbook!"
+          - "This is running on {{ inventory_hostname }}"
