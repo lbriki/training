@@ -113,8 +113,8 @@ pipeline {
                     // Use the parameter value to determine which roles to update
                     def updateRoles = params.UPDATE_ROLES.split(',')
                     for (def role in updateRoles) {
-                        // sh "ansible-playbook ./ansible/deploy.yml --roles ${role.trim()}"
-                        sh "ansible-playbook roles ./ansible/${role.trim()} ./ansible/deploy.yml "
+                        sh "ansible-playbook ./ansible/deploy.yml --roles 2"
+                        // sh "ansible-playbook --roles ./ansible/${role.trim()} ./ansible/deploy.yml "
                     }
                 }
             }
