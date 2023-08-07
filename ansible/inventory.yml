@@ -6,6 +6,7 @@ all:
       ansible_host: 192.168.117.138
       ansible_user: sagon
       ansible_ssh_pass: 21212699qQ
+      ansible_ssh_common_args: '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 # [VM]
 # vm ansible_host= 192.168.117.135 ansible_user= sagon ansible_password= 21212699qQ 
 # //ansible_ssh_common_args= '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
