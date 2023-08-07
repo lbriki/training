@@ -5,3 +5,4 @@
       path: ../applications/qr
       pull: no
     source: build
+    tags: qr_tag
