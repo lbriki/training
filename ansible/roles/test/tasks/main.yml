@@ -1,2 +1,4 @@
     - name: Echo "gooood work"
-      shell: echo "gooood work"
+      shell: mkdir Mr-Anwer
+      arg:
+       chdir: /home/sagon/
