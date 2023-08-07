@@ -113,7 +113,7 @@ pipeline {
         stage('Lancement de Ansible playbook') {
             steps {
                 script {
-                    sh "ansible-playbook --vault-password-file ./ansible/vaultpwd -i ./ansible/inv ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}\""
+                    sh "ansible-playbook --vault-password-file ./ansible/vaultpwd -i ./ansible/inv.yml ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}\""
                 }
             }
         }
