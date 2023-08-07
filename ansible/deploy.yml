@@ -16,9 +16,11 @@
     qr_role_enabled: "{{ qr }}"
     front_role_enabled: "{{ front }}"
     back_role_enabled: "{{ back }}"
+    TEST: "{{ TEST }}"
 
   roles:
     - { role: back, when: back_role_enabled == 'true' }
     - { role: qr, when: qr_role_enabled == 'true' }
     - { role: front, when: front_role_enabled == 'true' }
-    - run
+    - { role: test, when: TEST == 'true' }
+    # - run
