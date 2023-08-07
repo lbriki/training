@@ -3,3 +3,9 @@
     msg:
       - "Hello from Ansible playbook!"
       - "This is running on {{ inventory_hostname }}"
+
+- name: Create MR folder in /home/sagon
+  ansible.builtin.file:
+    path: "/home/sagon/MR"
+    state: directory
+    mode: "0755"
