@@ -4,8 +4,7 @@
   gather_facts: no
 
   roles:
-    - roles/back
-    - role: roles/qr
-      tags: qr_tag
-    - roles/front
-    - roles/run 
+    - back
+    - qr
+    - front
+    - run 
