@@ -104,16 +104,16 @@ pipeline {
     //         }
     //     }
     // }
-      environment {
-        QR = 'true'
-        FRONT = 'true'
-        BACK = 'true'
-    }
+    //   environment {
+    //     QR = 'false'
+    //     FRONT = 'false'
+    //     BACK = 'fase '
+    // }
     stages {
         stage('Lancement de Ansible playbook') {
             steps {
                 script {
-                    sh "ansible-playbook ./ansible/deploy.yml --extra-vars \"qr=${env.QR} front=${env.FRONT} back=${env.BACK}\""
+                    sh "ansible-playbook ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} back=${BACK}\""
                 }
             }
         }
