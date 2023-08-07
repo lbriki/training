@@ -93,13 +93,27 @@ pipeline {
 //             }
 //         }
 //     }
+    // stages {
+    //     stage('Lancement de Ansible playbook') {
+    //         steps {
+    //             script {
+                    
+    //                     sh "ansible-playbook ./ansible/deploy.yml "
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+      environment {
+        QR = 'true'
+        FRONT = 'true'
+        BACK = 'true'
+    }
     stages {
         stage('Lancement de Ansible playbook') {
             steps {
                 script {
-                    
-                        sh "ansible-playbook ./ansible/deploy.yml "
-                    }
+                    sh "ansible-playbook ./ansible/deploy.yml --extra-vars \"qr=${env.QR} front=${env.FRONT} back=${env.BACK}\""
                 }
             }
         }
