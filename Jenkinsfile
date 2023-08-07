@@ -113,7 +113,7 @@ pipeline {
         stage('Lancement de Ansible playbook') {
             steps {
                 script {
-                    sh "ansible-playbook ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} back=${BACK}\""
+                    sh "ansible-playbook -i ./ansible/inventory.yml ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} back=${BACK}\""
                 }
             }
         }
