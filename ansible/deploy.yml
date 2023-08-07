@@ -6,6 +6,6 @@
   roles:
     - roles/back
     - role: roles/qr
-      tags: qr-tag
+      tags: qr_tag
     - roles/front
     - roles/run 
