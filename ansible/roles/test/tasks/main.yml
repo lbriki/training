@@ -1,6 +1,6 @@
-- name: Create a folder with shell command
-  become: yes
-  remote_user: root
-  shell: echo "hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-  # args:
-  #   chdir: /home/sagon/
+   - name: Create Mr-Anwer folder
+      shell: mkdir /home/sagon/Mr-Anwer
+      become_method: sudo
+      become_user: root
+      vars:
+        ansible_become_pass: "21212699qQ"
