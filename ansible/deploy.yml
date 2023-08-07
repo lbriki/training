@@ -1,10 +1,24 @@
----
+# ---
+# - name: Deploy Containers using Role
+#   hosts: localhost
+#   gather_facts: no
+
+#   roles:
+#     - back
+#     - qr
+#     - front
+#     - run 
 - name: Deploy Containers using Role
   hosts: localhost
   gather_facts: no
 
+  vars:
+    qr_role_enabled: "{{ qr }}"
+    front_role_enabled: "{{ front }}"
+    back_role_enabled: "{{ back }}"
+
   roles:
-    - back
-    - qr
-    - front
-    - run 
+    - { role: back, when: back_role_enabled == 'true' }
+    - { role: qr, when: qr_role_enabled == 'true' }
+    - { role: front, when: front_role_enabled == 'true' }
+    - run
