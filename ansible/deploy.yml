@@ -9,6 +9,7 @@
 #     - front
 #     - run 
 - name: Deploy Containers using Role
+  hosts: all
   gather_facts: no
 
   vars:
