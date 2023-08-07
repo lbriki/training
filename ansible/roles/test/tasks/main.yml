@@ -10,7 +10,6 @@
     state: directory
     mode: "0755"
   become: true
-  become_user: root
   become_method: sudo
   vars:
     ansible_become_password: "21212699qQ"
