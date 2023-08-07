@@ -114,7 +114,7 @@ pipeline {
                     def updateRoles = params.UPDATE_ROLES.split(',')
                     for (def role in updateRoles) {
                         // sh "ansible-playbook ./ansible/deploy.yml --roles ${role.trim()}"
-                        sh "ansible-playbook ./ansible/deploy.yml -t ${role.trim()}"
+                        sh "ansible-playbook --tags ${role.trim()} ./ansible/deploy.yml "
                     }
                 }
             }
