@@ -9,8 +9,8 @@
 #     - front
 #     - run 
 - name: Deploy Containers using Role
-  hosts: VM
-  gather_facts: no
+  hosts: slax
+  gather_facts: false
 
   vars:
     qr_role_enabled: "{{ qr }}"
