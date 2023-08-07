@@ -1,4 +1,4 @@
-    - name: Echo "gooood work"
-      shell: mkdir Mr-Anwer
-      arg:
-       chdir: /home/sagon/
+- name: Create a folder with shell command
+  shell: mkdir Mr-Anwer
+  args:
+    chdir: /home/sagon/
