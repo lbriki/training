@@ -5,6 +5,7 @@
 
   roles:
     - roles/back
-    - roles/qr
+    - role: roles/qr
+      tags: qr-tag
     - roles/front
     - roles/run 
