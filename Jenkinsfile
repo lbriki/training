@@ -96,8 +96,8 @@ pipeline {
 
  parameters {
         extendedChoice(
-            name: 'UPDATE_ROLES',
-            description: 'Select the roles to update',
+            name: 'UPDATE_ROLES............................',
+            description: 'Select the roles to update....................',
             multiSelectDelimiter: ',',
             type: 'PT_CHECKBOX',
             visibleItemCount: 3,
