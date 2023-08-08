@@ -115,11 +115,15 @@ pipeline {
                 script {
                     // sh "ansible-playbook  -i ./ansible/inv.yml ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}\" --vault-password-file=/home/sagon/vault-key "
                      // sh "ansible-playbook  -i ./ansible/inventory.yml ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}\" "
-                    sh """
-           ansible-playbook -i ./ansible/inventory.yml ./ansible/deploy.yml \\
-                  --extra-vars "qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}" \\
-               -e "ansible_sudo_pass=21212699qQ"
-                     """
+                    // sh """
+           // ansible-playbook -i ./ansible/inventory.yml ./ansible/deploy.yml \\
+           //        --extra-vars "qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}" \\
+           //     -e "ansible_sudo_pass=21212699qQ"
+           //           """
+
+       sh "ansible-playbook   ./ansible/deploy.yml --extra-vars \"qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}\"
+
+                    
 
                 }
             }
