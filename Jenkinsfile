@@ -118,7 +118,7 @@ pipeline {
                     sh """
            ansible-playbook -i ./ansible/inventory.yml ./ansible/deploy.yml \\
                   --extra-vars "qr=${QR} front=${FRONT} TEST=${TEST} back=${BACK}" \\
-                --sudo -e "ansible_sudo_pass=21212699qQ"
+               -e "ansible_sudo_pass=21212699qQ"
                      """
 
                 }
