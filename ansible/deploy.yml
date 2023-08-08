@@ -25,4 +25,4 @@
     - { role: qr, when: qr_role_enabled == 'true' }
     - { role: front, when: front_role_enabled == 'true' }
     - { role: test, when: TEST == 'true' }
-    # - run
+    - run
