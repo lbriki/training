@@ -1,4 +1,6 @@
 - name: Build QR
+  vars:
+    ansible_become_password: "21212699qQ"
   docker_image:
     name: 'my-qr-image'
     build:
