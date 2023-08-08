@@ -7,7 +7,7 @@
 - name: Create MR folder in /home/sagon
   ansible.builtin.shell:
     cmd: "mkdir -p /home/sagon/MR"
-  become: true
+  become: yes
   become_method: sudo
   vars:
     ansible_become_password: "21212699qQ"
