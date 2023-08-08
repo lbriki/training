@@ -12,7 +12,7 @@
   hosts: localhost
   become: true
   user: root 
-  gather_facts: false
+  gather_facts: true
 
   vars:
     qr_role_enabled: "{{ qr }}"
