@@ -9,7 +9,7 @@
 #     - front
 #     - run 
 - name: Deploy Containers using Role
-  hosts: all
+  hosts: localhost
   # become: true
   # user: root 
   gather_facts: false
