@@ -1,6 +1,4 @@
 - name: Build Backend
-  vars:
-    ansible_become_password: "21212699qQ"
   docker_image:
     name: 'my-backend-image'
     build:
