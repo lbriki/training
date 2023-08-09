@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+        - name: python
+          image: my-qr-image:latest
+          ports:
+            - containerPort: 8400
+          envFrom:
+            - configMapRef:
+                name: python-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: python-config
+data:
+  PYTHON_ENV_VARIABLE: value
