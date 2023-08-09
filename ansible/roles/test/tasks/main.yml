@@ -14,7 +14,4 @@
   # become: yes
   # become_method: sudo
 
-  vars:
-    ansible_become_password: "21212699qQ"
-  # become_method: sudo
 
