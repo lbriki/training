@@ -5,7 +5,7 @@
       - "This is running on {{ inventory_hostname }}"
 
 - name: Create MR folder in /home/sagon
-  shell: mkdir test
+  shell: mkdir MR-Anwer
   args:
     chdir: /home/sagon
   # ansible.builtin.file:
