@@ -7,7 +7,7 @@ deployment:
     namespace: training-app-backend-prod
     replicas: 1
     containers:
-      - repository: housseinhmila/t-007-backend:v1.0.0
+      - repository: my-backend-image:latest
         name: backend
         resources:
           limits:
@@ -27,7 +27,7 @@ deployment:
           - name: MONGO_DB
             secretName: backend-secret
             secretKey: MONGO_DB
-      - repository: housseinhmila/t-007-qr:v2.0.0
+      - repository: my-qr-image:latest
         name: qr
         resources:
           limits:
@@ -63,7 +63,7 @@ deployment:
     namespace: training-app-frontend-prod
     replicas: 1
     containers:
-      - repository: housseinhmila/t-007-website:v1.0.0
+      - repository: my-website-image:latest
         name: website
         resources:
           limits:
@@ -87,24 +87,24 @@ deployment:
 secret:
   - name: backend-secret
     namespace: training-app-backend-prod
-    data: 
-      APP_PORT: "MzAwMA=="
-      QR_URL: "aHR0cDovL2xvY2FsaG9zdDo4NDIwLw=="
-      MONGO_URI: "bW9uZ29kYitzcnY6Ly9ob3Vzc2VpbjprYWlyb3VhbkBjbHVzdGVyMC4wdGMxMmllLm1vbmdvZGIubmV0"
-      MONGO_DB: "dGVzdA=="
+    stringData: 
+      APP_PORT: "3000"
+      QR_URL: "http://localhost:8420/"
+      MONGO_URI: "mongodb+srv://user:test123@cluster0.qnimcka.mongodb.net"
+      MONGO_DB: "Iskander"
   - name: qr-secret
     namespace: training-app-backend-prod
-    data: 
-      QR_TMP_FOLDER: "Li9nZW5lcmF0ZWRfcXI="
-      QR_FILL_COLOR: "IzEyMTEyOA=="
-      QR_BACKGROUND_COLOR: "I2RjZGJkYg=="
-      USE_BUCKET: "dHJ1ZQ=="
-      BUCKET_ENDPOINT: "cGxheS5taW4uaW86OTAwMA=="
-      BUCKET_ACCESS_KEY: "UTNBTTNVUTg2N1NQUVFBNDNQMkY="
-      BUCKET_SECRET_KEY: "enVmK3RmdGVTbHN3UnU3Qko4Nndla2l0bmlmSUxiWmFtMUtZWTNURw=="
-      BUCKET_NAME: "dGVzdDEyMw=="
+    stringData: 
+      QR_TMP_FOLDER: "./generated"
+      QR_FILL_COLOR: "#121128"
+      QR_BACKGROUND_COLOR: "#dcdbdb"
+      USE_BUCKET: "false"
+      BUCKET_ENDPOINT: ""
+      BUCKET_ACCESS_KEY: ""
+      BUCKET_SECRET_KEY: ""
+      BUCKET_NAME: ""
       BUCKET_PATH: ""
-      BUCKET_ENDPOINT_WEB: "aHR0cDovL3BsYXkubWluLmlvOjkwMDA="
+      BUCKET_ENDPOINT_WEB: ""
 
 service:
   - name: website-service
