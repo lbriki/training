@@ -22,10 +22,10 @@ kubectl wait --namespace ingress-nginx \
 kustomize build | kubectl apply -f -
 
 kubectl apply -k .
-#
-#chmod +x seals.sh
-#./seals.sh
-#
+
+chmod +x seals.sh
+./seals.sh
+
 POD_NAME=$(kubectl get pods -n training-app-backend-prod --selector=app=backend -o jsonpath='{.items[0].metadata.name}')
 kubectl cp ./tmp/api.js training-app-backend-prod/$POD_NAME:/app/config/api.js -c backend -n training-app-backend-prod
 

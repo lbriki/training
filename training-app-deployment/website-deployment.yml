@@ -29,8 +29,3 @@ spec:
         - name: config-volume
           configMap:
             name: website-configmap
-          
-        
-         
-
-

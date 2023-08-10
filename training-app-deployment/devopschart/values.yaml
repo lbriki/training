@@ -109,18 +109,15 @@ secret:
 service:
   - name: website-service
     namespace: training-app-frontend-prod
-    port: 80
-    protocol: TCP
-    targetPort: 4200
-    type: NodePort
     app: website
+    port: 80
+    type: NodePort
   - name: backend-service
     namespace: training-app-backend-prod
-    port: 8081
-    protocol: TCP
-    targetPort: 3000
-    type: NodePort
     app: backend
+    port: 8081
+    type: NodePort
+
 
 ingress:
   - name: backend-ingress
@@ -136,9 +133,11 @@ ingress:
     port: 8081
   - name: website-ingress
     namespace: training-app-frontend-prod
+    annotations: {}  # Add annotations here if needed
     host: localhost
     path: /
     pathType: Prefix
     service: website-service
     port: 80
     ingressClassName: nginx
+
