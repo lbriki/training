@@ -1,6 +1,7 @@
 #!/bin/bash
 
-k3d cluster delete devopscluster 
+k3d cluster delete devopscluster
+k3d cluster delete k3d-devopscluster 
 
 ./init-k3d-cluster.sh
 
