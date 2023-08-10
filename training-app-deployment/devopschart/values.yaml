@@ -116,7 +116,7 @@ service:
     app: website
   - name: backend-service
     namespace: training-app-backend-prod
-    port: 8080
+    port: 8081
     protocol: TCP
     targetPort: 3000
     type: NodePort
@@ -133,7 +133,7 @@ ingress:
     pathType: Prefix
     ingressClassName: nginx
     service: backend-service
-    port: 8080
+    port: 8081
   - name: website-ingress
     namespace: training-app-frontend-prod
     host: localhost

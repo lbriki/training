@@ -46,7 +46,7 @@ spec:
         - name: qr
           image: my-qr-image:latest
           ports:
-            - containerPort: 8400
+            - containerPort: 8420
           resources:
             limits:
               memory: "128Mi"

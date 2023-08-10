@@ -17,5 +17,5 @@ spec:
               service:
                 name: backend-service
                 port:
-                  number: 8080
+                  number: 8081
   ingressClassName: nginx
