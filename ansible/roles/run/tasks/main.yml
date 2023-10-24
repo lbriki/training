@@ -1,32 +1,32 @@
-# - name: Deploy containers using docker-compose
-#   community.docker.docker_compose:
-#     project_src: "{{ lookup('env', 'PWD') }}"
-    - name: Apply Node.js Deployment
-      command: kubectl apply -f nodejs-deployment.yaml
-      args:
-        chdir: ../Kubernities
+- name: Deploy containers using docker-compose
+  community.docker.docker_compose:
+    project_src: "{{ lookup('env', 'PWD') }}"
+    # - name: Apply Node.js Deployment
+    #   command: kubectl apply -f nodejs-deployment.yaml
+    #   args:
+    #     chdir: ../Kubernities
 
-    - name: Apply Python Deployment
-      command: kubectl apply -f python-deployment.yaml
-      args:
-        chdir: ../Kubernities
+    # - name: Apply Python Deployment
+    #   command: kubectl apply -f python-deployment.yaml
+    #   args:
+    #     chdir: ../Kubernities
 
-    - name: Apply Angular Deployment
-      command: kubectl apply -f angular-deployment.yaml
-      args:
-        chdir: ../Kubernities
+    # - name: Apply Angular Deployment
+    #   command: kubectl apply -f angular-deployment.yaml
+    #   args:
+    #     chdir: ../Kubernities
 
-    - name: Apply Node.js Service
-      command: kubectl apply -f nodejs-service.yaml
-      args:
-        chdir: ../Kubernities
+    # - name: Apply Node.js Service
+    #   command: kubectl apply -f nodejs-service.yaml
+    #   args:
+    #     chdir: ../Kubernities
 
-    - name: Apply Python Service
-      command: kubectl apply -f python-service.yaml
-      args:
-        chdir: ../Kubernities
+    # - name: Apply Python Service
+    #   command: kubectl apply -f python-service.yaml
+    #   args:
+    #     chdir: ../Kubernities
 
-    - name: Apply Angular Service
-      command: kubectl apply -f angular-service.yaml
-      args:
-        chdir: ../Kubernities
+    # - name: Apply Angular Service
+    #   command: kubectl apply -f angular-service.yaml
+    #   args:
+    #     chdir: ../Kubernities
